@@ -1,11 +1,11 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<stdio.h>
 #include<locale.h>
 #include<math.h>
 #include<time.h>
 #include "Header.h"
 
-// Задание 4
+// Р—Р°РґР°РЅРёРµ 4
 int primeNumber(int *number)
 {
 	int flag = 1;
@@ -21,16 +21,16 @@ int primeNumber(int *number)
 		return flag;
 }
 
-//Задание 5
+//Р—Р°РґР°РЅРёРµ 5
 void LineSearch(int *arr, int *len, int *key)
 {
 	BubleSort(arr, len);
 
-	for (int i = 0; i < *len; i++) // просматриваем все элементы в цикле
+	for (int i = 0; i < *len; i++) // РїСЂРѕСЃРјР°С‚СЂРёРІР°РµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РІ С†РёРєР»Рµ
 	{
-		if (arr[i] == *key)      // если находим элемент со значением key,
+		if (arr[i] == *key)      // РµСЃР»Рё РЅР°С…РѕРґРёРј СЌР»РµРјРµРЅС‚ СЃРѕ Р·РЅР°С‡РµРЅРёРµРј key,
 		{
-			printf("\nЭлемент A[%d]=%d найдем за %d проходов.\n", i, arr[i], i); 
+			printf("\nР­Р»РµРјРµРЅС‚ A[%d]=%d РЅР°Р№РґРµРј Р·Р° %d РїСЂРѕС…РѕРґРѕРІ.\n", i, arr[i], i); 
 			break;
 		}
 					
@@ -38,23 +38,23 @@ void LineSearch(int *arr, int *len, int *key)
 	
 }
 
-//Задание 6
+//Р—Р°РґР°РЅРёРµ 6
 
 void BinarySearch(int *arr, int *len, int *key)
 {
 	BubleSort(arr, len);
-	int left = 0; // задаем левую и правую границы поиска
+	int left = 0; // Р·Р°РґР°РµРј Р»РµРІСѓСЋ Рё РїСЂР°РІСѓСЋ РіСЂР°РЅРёС†С‹ РїРѕРёСЃРєР°
 	int right = *len-1;
-	int search = -1; // найденный индекс элемента равен -1 (элемент не найден)
+	int search = -1; // РЅР°Р№РґРµРЅРЅС‹Р№ РёРЅРґРµРєСЃ СЌР»РµРјРµРЅС‚Р° СЂР°РІРµРЅ -1 (СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ)
 	int count = 0;
 
-	while (left <= right) // пока левая граница не "перескочит" правую
+	while (left <= right) // РїРѕРєР° Р»РµРІР°СЏ РіСЂР°РЅРёС†Р° РЅРµ "РїРµСЂРµСЃРєРѕС‡РёС‚" РїСЂР°РІСѓСЋ
 	{
 		count++;
-		int mid = (left + right) / 2; // ищем середину отрезка
+		int mid = (left + right) / 2; // РёС‰РµРј СЃРµСЂРµРґРёРЅСѓ РѕС‚СЂРµР·РєР°
 
-									  // если ключевое поле равно искомому
-									  // мы нашли требуемый элемент, выходим из цикла
+									  // РµСЃР»Рё РєР»СЋС‡РµРІРѕРµ РїРѕР»Рµ СЂР°РІРЅРѕ РёСЃРєРѕРјРѕРјСѓ
+									  // РјС‹ РЅР°С€Р»Рё С‚СЂРµР±СѓРµРјС‹Р№ СЌР»РµРјРµРЅС‚, РІС‹С…РѕРґРёРј РёР· С†РёРєР»Р°
 		if (*key == arr[mid])
 		{
 			search = mid;
@@ -62,31 +62,31 @@ void BinarySearch(int *arr, int *len, int *key)
 		}
 
 
-		if (*key < arr[mid])     // если искомое ключевое поле меньше найденной середины
-			right = mid - 1;  // смещаем правую границу, продолжим поиск в левой части
+		if (*key < arr[mid])     // РµСЃР»Рё РёСЃРєРѕРјРѕРµ РєР»СЋС‡РµРІРѕРµ РїРѕР»Рµ РјРµРЅСЊС€Рµ РЅР°Р№РґРµРЅРЅРѕР№ СЃРµСЂРµРґРёРЅС‹
+			right = mid - 1;  // СЃРјРµС‰Р°РµРј РїСЂР°РІСѓСЋ РіСЂР°РЅРёС†Сѓ, РїСЂРѕРґРѕР»Р¶РёРј РїРѕРёСЃРє РІ Р»РµРІРѕР№ С‡Р°СЃС‚Рё
 		else
-			left = mid + 1;   // смещаем левую границу, продолжим поиск в правой части
+			left = mid + 1;   // СЃРјРµС‰Р°РµРј Р»РµРІСѓСЋ РіСЂР°РЅРёС†Сѓ, РїСЂРѕРґРѕР»Р¶РёРј РїРѕРёСЃРє РІ РїСЂР°РІРѕР№ С‡Р°СЃС‚Рё
 	}
 
-	if (search == -1)     // если индекс элемента по-прежнему -1, элемент не найден
-		printf("\nЭлемент не найден!");
+	if (search == -1)     // РµСЃР»Рё РёРЅРґРµРєСЃ СЌР»РµРјРµРЅС‚Р° РїРѕ-РїСЂРµР¶РЅРµРјСѓ -1, СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
+		printf("\nР­Р»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ!");
 
-	else          // иначе выводим элемент, его ключ и значение
-		printf("\nЭлемент A[%d]=%d найдем за %d проходов.\n", search, arr[search], count);
+	else          // РёРЅР°С‡Рµ РІС‹РІРѕРґРёРј СЌР»РµРјРµРЅС‚, РµРіРѕ РєР»СЋС‡ Рё Р·РЅР°С‡РµРЅРёРµ
+		printf("\nР­Р»РµРјРµРЅС‚ A[%d]=%d РЅР°Р№РґРµРј Р·Р° %d РїСЂРѕС…РѕРґРѕРІ.\n", search, arr[search], count);
 
 }
 
 void BubleSort(int *arr, int *len)
 {  
-	printf("\nМассив после сортировки:\n");
+	printf("\nРњР°СЃСЃРёРІ РїРѕСЃР»Рµ СЃРѕСЂС‚РёСЂРѕРІРєРё:\n");
 
 	for (int i = 0; i < *len; i++)
 	{
-		for (int j = (*len - 1); j > i; j--) // для всех элементов после i-ого
+		for (int j = (*len - 1); j > i; j--) // РґР»СЏ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РїРѕСЃР»Рµ i-РѕРіРѕ
 		{
-			if (arr[j - 1] > arr[j]) // если текущий элемент меньше предыдущего
+			if (arr[j - 1] > arr[j]) // РµСЃР»Рё С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РјРµРЅСЊС€Рµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ
 			{
-				int temp = arr[j - 1]; // меняем их местами
+				int temp = arr[j - 1]; // РјРµРЅСЏРµРј РёС… РјРµСЃС‚Р°РјРё
 				arr[j - 1] = arr[j];
 				arr[j] = temp;
 			}
@@ -96,7 +96,7 @@ void BubleSort(int *arr, int *len)
 	}
 }
 
-// Задание 7
+// Р—Р°РґР°РЅРёРµ 7
 void fillArrayBullsAndCows(int *mas, int *len, int *min, int *max)
 {
 	int i=0, flag =0;
@@ -145,7 +145,7 @@ int bulls(int *arr1, int *arr2, int *len)
 				bullsCount++;			
 			}		
 	}
-	//printf("Быков: %d\n", bullsCount);
+	//printf("Р‘С‹РєРѕРІ: %d\n", bullsCount);
 	return bullsCount;
 }
 
@@ -162,7 +162,7 @@ int cows(int *arr1, int *arr2, int *len)
 			}
 		}
 	}
-	//printf("Коров: %d\n", cowsCount);
+	//printf("РљРѕСЂРѕРІ: %d\n", cowsCount);
 	return cowsCount;
 }
 
@@ -189,10 +189,10 @@ void BullsAndCowsResult(int *number, int *arr2, int *len)
 	bull = bulls(arr1, arr2, len);
 	cow = cows(arr1, arr2, len);
 
-	printf("Быков: %d, Коров: %d\n", bull, cow);
+	printf("Р‘С‹РєРѕРІ: %d, РљРѕСЂРѕРІ: %d\n", bull, cow);
 
 	if (bull == 4)
-		printf("Вы победили!\n");
+		printf("Р’С‹ РїРѕР±РµРґРёР»Рё!\n");
 
 }
 
@@ -205,7 +205,7 @@ void fillArrayInteger(int * mas, int len, int *min, int *max)
 
 void printArray(int * mas, int len)
 {
-	printf("\nИсходный массив:\n");
+	printf("\nРСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ:\n");
 	for (int i = 0; i < len; i++)
 		printf("A[%d]=%d ", i, mas[i]);
 	printf("\n");
